@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sederhana tanpa AJAX</title>
+    <link rel="stylesheet" href="src/style.css">
+    <script src="jquey/jquery-3.6.0.min.js"></script>
+    <script>
+        const setTampil = (link) => {
+            $('#display').load(link);
+        }
+        const setTampilanLogin = (link) => {
+            $('.container').load(link);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Scroll To Top Button -->
+    <div class="scrollTop" onclick="scrollToTop();"><span>Top</span></div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <a href="#" class="logo">Logo.</a>
+        <ul class="navigation">
+            <li onclick="setTampil('pages/home.html')"><a href="#home">Home</a></li>
+            <li onclick="setTampil('pages/popular.html')"><a href="#popular">Popular</a></li>
+            <li onclick="setTampil('pages/anime.html')"><a href="#titleList">List</a></li>
+            <li onclick="setTampil('pages/about.html')"><a href="#aboutUs">About Us</a></li>
+            <li onclick="setTampil('pages/contact.html')"><a href="#contactUs">Contact</a></li>
+            <li><a href="pages/login.html">Sign In</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+    </header>
+
+    <main id="display" class="display"></main>
+
+    <!-- Sticky Navigation -->
+    <script type="text/javascript">
+        window.addEventListener("scroll", function() {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+
+        window.addEventListener("scroll", function() {
+            var scroll = document.querySelector('.scrollTop');
+            scroll.classList.toggle("active", window.scrollY > 500)
+        })
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        }
+
+        setTampil('pages/home.html');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,794 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+/* Header */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 100px;
+    z-index: 100000;
+    background: #FF7396;
+    transition: 0.6s;
+}
+
+header.sticky {
+    padding: 0 100px;
+}
+
+header.sticky .search {
+    height: 30px;
+    transition: 0.5s;
+}
+
+header .logo {
+    position: relative;
+    font-size: 1.5em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header .navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+header .navigation li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+header .navigation li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    list-style: 1px;
+}
+
+header .navigation li a:hover {
+    color: #F4E06D;
+}
+
+header .search {
+    position: relative;
+    width: 300px;
+    height: 40px;
+}
+
+header .search input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background: transparent;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+
+header .search input::placeholder {
+    color: #fff;
+}
+
+
+/* Home Content */
+
+.home {
+    background: #fff;
+    padding: 200px 100px 100px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .content {
+    max-width: 700px;
+}
+
+.home .content h2 {
+    font-size: 3em;
+    color: #FF7396;
+}
+
+.home .content p {
+    font-size: 1em;
+    color: #111;
+}
+
+.home .content a {
+    display: inline-block;
+    background: #FF7396;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.home .content a:hover {
+    background: #f791aa;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+.home img {
+    max-width: 400px;
+    margin-left: 50px;
+    border-radius: 50%;
+}
+
+
+/* To Top Button */
+
+.scrollTop {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: #FF7396;
+    border-radius: 50%;
+    background-size: 40px;
+    cursor: pointer;
+    z-index: 10000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.scrollTop span {
+    position: absolute;
+    font-size: 1.1em;
+    text-align: center;
+    padding-top: 13px;
+    padding-left: 9px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.scrollTop.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Popular */
+
+.popular {
+    position: relative;
+    max-width: 100%;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.1);
+}
+
+.popular h3 {
+    position: relative;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    padding-left: 70px;
+    color: #FF7396;
+}
+
+.popular .list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.popular .list::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FF7396;
+    transition: transform 0.5s;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.popular .list:hover::before {
+    transition: transform 0.5s;
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.popular .list .imgBox {
+    position: relative;
+    min-width: 100px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.popular .list .imgBox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popular .list .imgContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    color: #333;
+}
+
+.popular .list .imgContent .rank {
+    position: absolute;
+    right: 0;
+    margin-top: 30px;
+    font-size: 2em;
+    color: #fff;
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.popular .list .imgContent .rank small {
+    font-weight: 500;
+    opacity: 0.25;
+}
+
+.popular .list:hover .imgContent .rank {
+    transform: scale(1);
+}
+
+.popular .list .imgContent h4 {
+    font-weight: 600;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.popular .list .imgContent p {
+    opacity: 0.85;
+    transition: 0.5s;
+}
+
+.popular .list:hover .imgContent h4,
+.popular .list:hover .imgContent p {
+    color: #fff;
+}
+
+
+/* Anime List */
+
+.titleList h2 {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: #FF7396;
+}
+
+.animeList {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.animeList .card {
+    position: relative;
+    max-width: 300px;
+    height: 220px;
+    background: #FFF;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    border-radius: 4px;
+    flex-direction: column;
+    box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
+}
+
+.animeList .card:hover {
+    height: 430px;
+}
+
+.animeList .card .cardBox {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    top: -60px;
+    left: 10px;
+    z-index: 1;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.animeList .card .cardBox img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.animeList .card .cardContent {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.animeList .card:hover .cardContent {
+    visibility: visible;
+    opacity: 1;
+    margin-top: -40px;
+    transition-delay: 0.3s;
+}
+
+.animeList .card .cardContent h2 {
+    font-size: 1.2em;
+}
+
+
+/* About Us */
+
+.aboutUs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.aboutTitle h2 {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: #FF7396;
+}
+
+.aboutUs .about {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 30px;
+}
+
+.aboutUs .about .aboutImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+    z-index: 2;
+}
+
+.aboutUs .about:hover .aboutImg {
+    transform: translate(-30px, -30px);
+}
+
+.aboutUs .about .aboutImg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.aboutUs .about .aboutContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 15px;
+    transition: 0.5s ease-in-out;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.aboutUs .about:hover .aboutContent {
+    transform: translate(30px, 30px);
+}
+
+.aboutUs .about .aboutContent h2 {
+    font-size: 20px;
+    color: #FF7396;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.aboutUs .about .aboutContent h2 span {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: #111;
+}
+
+
+/* Contact Us */
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.contactUs {
+    position: relative;
+    min-width: 1100px;
+    min-height: 550px;
+    display: flex;
+    z-index: 1000;
+}
+
+.contactUs .contactInfo {
+    position: absolute;
+    top: 40px;
+    width: 350px;
+    height: calc(100% - 80px);
+    background: #FF7396;
+    z-index: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contactUs .contactInfo h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.contactUs .contactInfo ul.info {
+    position: relative;
+    margin: 20px 0;
+}
+
+.contactUs .contactInfo ul.info li {
+    position: relative;
+    list-style: none;
+    display: flex;
+    margin: 20px 0;
+    cursor: pointer;
+    align-items: flex-start;
+}
+
+.contactUs .contactInfo ul.info li span:nth-child(1) {
+    width: 30px;
+    min-width: 30px;
+}
+
+.contactUs .contactInfo ul.info li span:nth-child(1) img {
+    max-width: 100%;
+    filter: invert(1);
+}
+
+.contactUs .contactInfo ul.info li span:nth-child(2) {
+    color: #fff;
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.contactUs .contactInfo ul.sci {
+    position: relative;
+    display: flex;
+}
+
+.contactUs .contactInfo ul.sci li {
+    list-style: none;
+    margin-right: 15px;
+}
+
+.contactUs .contactInfo ul.sci li a {
+    text-decoration: none;
+}
+
+.contactUs .contactInfo ul.sci li a img {
+    filter: invert(1);
+}
+
+.contactUs .contactForm {
+    position: absolute;
+    padding: 70px 50px;
+    padding-left: 250px;
+    margin-left: 150px;
+    width: calc(100% - 150px);
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.25);
+}
+
+.contactUs .contactForm h2 {
+    color: #FF7396;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.contactUs .contactForm .formBox {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+
+.contactUs .contactForm .formBox .inputBox {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.contactUs .contactForm .formBox .inputBox.w50 {
+    width: 47%;
+}
+
+.contactUs .contactForm .formBox .inputBox.w100 {
+    width: 100%;
+}
+
+.contactUs .contactForm .formBox .inputBox input,
+.contactUs .contactForm .formBox .inputBox textarea {
+    width: 100%;
+    resize: none;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #777;
+}
+
+.contactUs .contactForm .formBox .inputBox textarea {
+    height: 120px;
+}
+
+.contactUs .contactForm .formBox .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    pointer-events: none;
+    font-size: 18px;
+    font-weight: 300;
+    transition: 0.3s;
+}
+
+.contactUs .contactForm .formBox .inputBox input:focus~span,
+.contactUs .contactForm .formBox .inputBox input:valid~span,
+.contactUs .contactForm .formBox .inputBox textarea:focus~span,
+.contactUs .contactForm .formBox .inputBox textarea:valid~span {
+    transform: translateY(-20px);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #FF7396;
+    font-weight: 500;
+}
+
+.contactUs .contactForm .formBox .inputBox input[type="submit"] {
+    position: relative;
+    cursor: pointer;
+    background: #FF7396;
+    color: #fff;
+    max-width: 150px;
+    padding: 12px;
+}
+
+.contactUs .contactForm .formBox .inputBox input[type="submit"]:hover {
+    background: #f791aa;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1200px) {
+    .contactUs {
+        width: 90%;
+        min-width: auto;
+        margin: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    }
+    .contactUs .contactInfo {
+        top: 0;
+        height: 550px;
+        position: relative;
+        box-shadow: none;
+    }
+    .contactUs .contactForm {
+        position: relative;
+        width: calc(100% - 350px);
+        padding-left: 0;
+        margin-left: 0;
+        padding: 40px;
+        height: 550px;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 991px) {
+    header {
+        padding: 10px 20px;
+        flex-direction: column;
+    }
+    header.sticky {
+        padding: 0 100px;
+        transition: 0.5s;
+    }
+    header.sticky .search {
+        margin-bottom: 10px;
+    }
+    .home {
+        padding: 150px 20px 50px;
+        flex-direction: column-reverse;
+    }
+    .home img {
+        margin-top: 30px;
+    }
+    .banner .image {
+        margin-left: 0;
+        max-width: 80%;
+    }
+    .home .content h2 {
+        font-size: 2em;
+        margin-top: 20px;
+    }
+    .popular h3 {
+        font-size: 2em;
+        margin-top: 130px;
+    }
+    .titleList h2 {
+        font-size: 2em;
+        margin-top: 150px;
+    }
+    .aboutTitle h2 {
+        font-size: 2em;
+        margin-top: 150px;
+    }
+    section .contactUs {
+        margin-top: 150px;
+    }
+    .contactUs {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .contactUs .contactInfo {
+        width: 100%;
+        height: auto;
+    }
+    .contactUs .contactForm {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+    }
+    .contactUs {
+        width: 90%;
+        min-width: auto;
+        margin: 20px;
+    }
+    .contactInfo {
+        top: 0;
+        height: 550px;
+        position: relative;
+        box-shadow: none;
+    }
+    .contactUs .contactInfo ul.sci {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 10px 20px;
+        flex-direction: column;
+    }
+    header .search {
+        width: 100%;
+    }
+    .home {
+        padding: 150px 20px 50px;
+        flex-direction: column-reverse;
+    }
+    .home .content h2 {
+        font-size: 1.5em;
+    }
+    .home .image {
+        margin-top: 20px;
+        max-width: 60%;
+        margin-left: 0;
+    }
+    .popular h3 {
+        font-size: 1.5em;
+    }
+    .titleList h2 {
+        font-size: 1.5em;
+    }
+    .contactUs .contactForm {
+        padding: 25px;
+    }
+    .contactUs .contactInfo {
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .contactUs .contactInfo ul.sci {
+        margin-top: 40px;
+    }
+    .contactUs .contactForm .formBox .inputBox.w50 {
+        width: 100%;
+    }
+    .aboutTitle h2 {
+        font-size: 1.5em;
+    }
+    .aboutUs .about:hover .aboutImg {
+        transform: translate(0, -30px);
+    }
+    .aboutUs .about:hover .aboutContent {
+        transform: translate(0, 30px);
+    }
+}
+
+@media (max-width: 500px) {
+    .home img {
+        margin-top: 20px;
+    }
+    .popular h3 {
+        font-size: 1.5em;
+        margin-top: 150px;
+    }
+    .titleList h2 {
+        font-size: 1.5em;
+        margin-top: 170px;
+    }
+    .aboutTitle h2 {
+        font-size: 1.5em;
+        margin-top: 170px;
+    }
+}
